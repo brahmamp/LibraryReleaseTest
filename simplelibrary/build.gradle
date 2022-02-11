@@ -7,8 +7,8 @@ plugins {
     ext {
         mGroupId = "com.wwt"
         mArtifactId = "simple-library"
-        mVersionCode = 2
-        mVersionName = "1.0.1"
+        mVersionCode = 3
+        mVersionName = "1.0.2"
 
         mLibraryName = "SimpleLibrary"
         mLibraryDescription = "Simple Library for simple things!"
