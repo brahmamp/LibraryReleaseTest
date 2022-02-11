@@ -95,7 +95,7 @@ afterEvaluate {
                 url = uri("https://maven.pkg.github.com/brahmamp/LibraryReleaseTest")
 
                 credentials {
-                    username = ext.usr
+                    username = ext.user
                     password = ext.key
                 }
             }
