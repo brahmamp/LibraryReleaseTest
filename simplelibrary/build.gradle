@@ -3,6 +3,14 @@ plugins {
     id 'kotlin-android'
     id 'maven-publish'  // 1. Apply plugin
 }
+
+Properties props = new Properties()
+try {
+    props.load(file('github.properties').newDataInputStream())
+} catch (Exception ex) {
+    throw java.lang.Exception("Missing keys.properties file.$ex");
+}
+
 // 2. Declare library details
     ext {
         mGroupId = "com.wwt"
