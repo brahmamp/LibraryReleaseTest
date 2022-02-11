@@ -7,8 +7,8 @@ plugins {
     ext {
         mGroupId = "com.wwt"
         mArtifactId = "simple-library"
-        mVersionCode = 3
-        mVersionName = "1.0.2"
+        mVersionCode = 4
+        mVersionName = "1.0.3"
 
         mLibraryName = "SimpleLibrary"
         mLibraryDescription = "Simple Library for simple things!"
@@ -21,8 +21,8 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 31
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 4
+        versionName "1.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -63,30 +63,40 @@ task androidSourcesJar(type: Jar) {
 afterEvaluate {
     publishing {
         publications {
-            maven(MavenPublication) {
-                groupId mGroupId
-                artifactId mArtifactId
-                version mVersionName
-
+            release(MavenPublication) {
                 from components.release
 
-                artifact androidSourcesJar
+                // Replace with your own group ID.
+                groupId 'com.wwt.simple-library'
+                
+                // Replace with the name of your library
+                artifactId 'simplelibrary'
+                version '1.0.0'
+            }
+            
+            debug(MavenPublication) {
+                from components.debug
 
-                pom {
-                    name = mLibraryName
-                    description = mLibraryDescription
-                }
+                // Replace with your own group ID.
+                groupId 'com.wwt.simple-library'
+                
+                // Replace with the name of your library
+                artifactId 'simplelibrary'
+                version '1.0.0'
             }
         }
 
-        // 5. Update repository details and credentials.
         repositories {
             maven {
                 name = "GitHubPackages"
+                
+                // Replace GITHUB_USERID with your personal or organisation user ID and 
+                // REPOSITORY with the name of the repository on GitHub
                 url = uri("https://maven.pkg.github.com/brahmamp/LibraryReleaseTest")
+
                 credentials {
-                    username = System.getenv("GPR_USER")
-                    password = System.getenv("GPR_KEY")
+                    username = ext.usr
+                    password = ext.key
                 }
             }
         }
