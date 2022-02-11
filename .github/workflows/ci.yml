@@ -47,7 +47,7 @@ jobs:
         run: chmod +x gradlew
         
       - name: clean Build
-        run: bash ./gradlew clean build
+        run: ./gradlew clean build
 
       - name: Build AAR ⚙️🛠
         run: bash ./gradlew :simplelibrary:assemble
