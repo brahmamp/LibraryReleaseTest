@@ -1,8 +1,30 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'maven-publish'  // 1. Apply plugin
+    // 1. Apply plugin
+    id 'maven-publish'
 }
+//apply from: project.ext.github.properties
+
+//apply from: rootProject.extensions.getByName("properties")
+
+Properties props = new Properties()
+try {
+    props.load(file('github.properties').newDataInputStream())
+} catch (Exception ex) {
+    throw java.lang.Exception("Missing keys.properties file.$ex");
+}
+
+//
+//def githubProperties = new Properties()
+//githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+//def getVersionName = { ->
+//    return "1.0.3"  // Replace with version Name
+//}
+//def getArtificatId = { ->
+//    return "sampleAndroidLib" // Replace with library name ID
+//}
+
 // 2. Declare library details
     ext {
         mGroupId = "com.wwt"
@@ -71,7 +93,7 @@ afterEvaluate {
                 
                 // Replace with the name of your library
                 artifactId 'simplelibrary'
-                version '1.0.0'
+                version '1.0.3'
             }
             
             debug(MavenPublication) {
@@ -95,8 +117,8 @@ afterEvaluate {
                 url = uri("https://maven.pkg.github.com/brahmamp/LibraryReleaseTest")
 
                 credentials {
-                    username = ext.usr
-                    password = ext.key
+                    username = props.getProperty("user") //ext.user
+                    password = props.getProperty("key") //ext.key
                 }
             }
         }
