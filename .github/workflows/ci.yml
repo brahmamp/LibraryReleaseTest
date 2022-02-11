@@ -19,6 +19,10 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        
+      - name: clean Build
+        run: bash ./gradlew clean build
+        
       - name: build release
         run: bash ./gradlew assembleDebug
         
@@ -45,9 +49,6 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Grant Permission for Gradlew to Execute
         run: chmod +x gradlew
-        
-      - name: clean Build
-        run: ./gradlew clean build
 
       - name: Build AAR ⚙️🛠
         run: bash ./gradlew :simplelibrary:assemble
