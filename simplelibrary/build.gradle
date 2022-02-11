@@ -5,11 +5,8 @@ plugins {
 }
 
 Properties props = new Properties()
-try {
-    props.load(file('github.properties').newDataInputStream())
-} catch (Exception ex) {
-    throw java.lang.Exception("Missing keys.properties file.$ex");
-}
+props.load(file('github.properties').newDataInputStream())
+
 
 // 2. Declare library details
     ext {
