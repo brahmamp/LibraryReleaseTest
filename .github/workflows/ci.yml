@@ -54,7 +54,7 @@ jobs:
         run: bash ./gradlew :simplelibrary:assemble
 
       - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :simplelibrary:publish
+        run: bash ./gradlew :simplelibrary:publish --stacktrace
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
