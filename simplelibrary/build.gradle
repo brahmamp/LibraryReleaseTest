@@ -12,7 +12,7 @@ props.load(file('github.properties').newDataInputStream())
     ext {
         compileSdkVersion = 31
         mGroupId = "com.wwt"
-        mArtifactId = "simple-library"
+        //mArtifactId = "simple-library"
         mVersionCode = 4
         mVersionName = "1.0.3"
 
@@ -73,7 +73,7 @@ afterEvaluate {
                 from components.release
 
                 // Replace with your own group ID.
-                groupId 'com.wwt.simple-library'
+                groupId 'com.wwt'
                 
                 // Replace with the name of your library
                 artifactId 'simplelibrary'
@@ -84,7 +84,7 @@ afterEvaluate {
                 from components.debug
 
                 // Replace with your own group ID.
-                groupId 'com.wwt.simple-library'
+                groupId 'com.wwt'
                 
                 // Replace with the name of your library
                 artifactId 'simplelibrary'
